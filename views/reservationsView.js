@@ -12,13 +12,24 @@ function updateListForms() {
   const forms = sessionStorage.getItem("cadastros");
   const listForms = JSON.parse(forms);
 
+  //Criação tabela;
+  const table = document.createElement("table");
+  const tr1 = document.createElement("tr");
+  const th1 = document.createElement("th");
+  const tr2 = document.createElement("tr");
+  const th2 = document.createElement("th");
+
   listForms.forEach((form, index) => {
-    const listItem = document.createElement("li");
+    const listItem = document.createElement("div");
+
+
+   
     if (form !== null) {
       listItem.textContent = `Vaga ${index + 1}: ${form.proprietario} - ${form.placa}`;
 
       const deleteButton = document.createElement("button");
       deleteButton.textContent = "EXCLUIR";
+      deleteButton.className = "btn-delete"
       deleteButton.addEventListener("click", function () {
         deleteForm(index + 1);
         updateListForms();

@@ -6,7 +6,7 @@ function updateListForms() {
   const listForms = JSON.parse(forms);
 
   listForms.forEach((form, index) => {
-    const listItem = document.createElement("li");
+    const listItem = document.createElement("div");
     if (form !== null) {
       listItem.textContent = `Vaga ${index + 1}: ${form.proprietario} - ${
         form.placa}`;

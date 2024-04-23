@@ -9,16 +9,21 @@ document.getElementById("cadastroForm").addEventListener("submit", function (eve
     const cor = document.getElementById("corInput").value;
     const vaga = document.getElementById("vagaInput").value;
 
+    if (!placa || !proprietario || !apartamento || !bloco || !modelo || !cor || !vaga) {
+      alert("Por favor, preencha todos os campos.");
+      return;
+  }
+
     const newForm = new Form(placa,proprietario,apartamento,bloco,modelo,cor,vaga);
 
-    const formList = JSON.parse(sessionStorage.getItem("cadastros")) || Array(10).fill(null);
+    const formList = JSON.parse(sessionStorage.getItem("forms")) || Array(10).fill(null);
 
     formList[vaga - 1] = newForm;
-    sessionStorage.setItem("cadastros", JSON.stringify(formList));
+    sessionStorage.setItem("forms", JSON.stringify(formList));
     document.getElementById("cadastroForm").reset();
 
     console.log(newForm);
     alert(`O veículo de placa ${newForm.placa} do ${newForm.proprietario} foi cadastrado com sucesso!`);
 
-    console.table(JSON.parse(sessionStorage.getItem("cadastros")));
+    console.table(JSON.parse(sessionStorage.getItem("forms")));
   });

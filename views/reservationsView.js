@@ -1,8 +1,8 @@
 function deleteForm(index) {
-  const forms = sessionStorage.getItem("cadastros");
+  const forms = sessionStorage.getItem("forms");
   const listForms = JSON.parse(forms);
   listForms[index - 1] = null;
-  sessionStorage.setItem("cadastros", JSON.stringify(listForms));
+  sessionStorage.setItem("forms", JSON.stringify(listForms));
   updateListForms(); 
 }
 
@@ -10,7 +10,7 @@ function updateListForms() {
   const listFormsId = document.getElementById("list-forms");
   listFormsId.innerHTML = "";
 
-  const forms = sessionStorage.getItem("cadastros");
+  const forms = sessionStorage.getItem("forms");
   const listForms = JSON.parse(forms);
 
   const table = document.createElement("table");
@@ -28,12 +28,12 @@ function updateListForms() {
 
   listForms.forEach((form, index) => {
     if (form !== null) {
-      const tr = document.createElement("tr");
+      const trBody = document.createElement("tr");
 
       for (const prop in form) {
         const td = document.createElement("td");
         td.textContent = form[prop];
-        tr.appendChild(td);
+        trBody.appendChild(td);
       }
 
       const tdDelete = document.createElement("td");
@@ -44,9 +44,9 @@ function updateListForms() {
         deleteForm(index + 1);
       });
       tdDelete.appendChild(deleteButton);
-      tr.appendChild(tdDelete);
+      trBody.appendChild(tdDelete);
 
-      table.appendChild(tr);
+      table.appendChild(trBody);
     }
   });
 

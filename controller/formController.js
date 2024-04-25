@@ -14,6 +14,11 @@ document.getElementById("cadastroForm").addEventListener("submit", function (eve
       return;
   }
 
+    if (vaga >= 10) {
+      alert("Este estacionamento no momento só comporta 10 vagas. Tente uma vaga com numero menor igual a 10.");
+      return;
+
+    }
     const newForm = new Form(placa,proprietario,apartamento,bloco,modelo,cor,vaga);
 
     const formList = JSON.parse(sessionStorage.getItem("forms")) || Array(10).fill(null);

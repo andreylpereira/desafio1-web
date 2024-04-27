@@ -16,7 +16,7 @@ document.getElementById("cadastroForm").addEventListener("submit", function (eve
 
 
   /* If para limitar o número de vagas para 10. */
-    if (vaga >= 10) {
+    if (vaga > 10) {
       alert("Este estacionamento no momento só comporta 10 vagas. Tente uma vaga com numero menor igual a 10.");
       return;
 

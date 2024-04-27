@@ -32,7 +32,7 @@ function updateListForms() {
   if (listForms == null) {
     const trBody = document.createElement("tr");
     const td = document.createElement("td");
-    td.textContent = "Favor cadastrar um usuário no sistema!"
+    td.textContent = "Nenhuma vaga ocupada, favor efetuar algum cadastro no sistema."
     trBody.appendChild(td);
 
     for (let i = 0; i <= 10; i++) {
